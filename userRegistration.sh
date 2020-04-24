@@ -34,3 +34,17 @@ function checkPattern()
         fi
 }
 checkPattern $email $emailPattern
+
+mobilePattern="^[0-9]{2}[ ]{1}[0-9]{10}"
+read -p "Enter The Mobile Number := " mobileNumber
+
+function checkMobilePattern()
+{
+	if [[ $mobileNumber =~ $mobilePattern ]]
+	then
+		echo "Valid Number:"
+	else
+		echo "Invalid Number"
+	fi
+}
+checkMobilePattern 
