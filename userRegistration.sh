@@ -76,3 +76,17 @@ function checkPassword()
         fi
 }
 checkPassword $password $password_At_List_one_Upper_Case
+
+password_At_List_One_Numeric_Number="^[a-zA-Z0-9]*(.*[A-Z].*{1}+)(.*[0-9].*{1}+)[a-zA-Z0-9]*{7,40}$"
+read -p "Enter The Password := " password
+
+function checkPassword()
+{
+        if [[ ${#password} -ge 8 && $password =~ $password_At_List_One_Numeric_Number ]]
+        then
+                echo "Valid Password"
+        else
+                echo "Invalid Password"
+        fi
+}
+checkPassword
