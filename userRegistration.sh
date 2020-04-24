@@ -90,3 +90,15 @@ function checkPassword()
         fi
 }
 checkPassword
+
+function checkValidate()
+{
+        read -p "Enter The Password := " password
+        if [[ ${#password} -ge 8 && "$password" =~ *[[:lower:]]* && "$password" =~ *[[:upper:]]* && "$password" =~ *[[0-9]]*  && "$password" =~ *['!'@#\$%^\&*()_+]* ]]
+        then
+                echo "Valid Password"
+        else
+                echo "Invalid Password"
+        fi
+}
+checkValidate
