@@ -48,3 +48,17 @@ function checkMobilePattern()
 	fi
 }
 checkMobilePattern 
+
+passwordPattern="^[a-z]{8,}"
+read -p "Enter The Password := " password
+
+function checkPassword()
+{
+	if [[ ${#password} -ge 8 && $password =~ $passwordPattern ]]
+	then
+		echo "Valid Password:"
+	else
+		echo "Invalid Password:"
+	fi
+}
+checkPassword
