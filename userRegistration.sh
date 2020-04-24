@@ -62,3 +62,17 @@ function checkPassword()
 	fi
 }
 checkPassword
+
+password_At_List_one_Upper_Case="^[a-zA-Z0-9]*(.*[A-Z].*{1}+)[a-zA-Z0-9]$"
+read -p "Enter The PassWord := " password
+
+function checkPassword()
+{
+        if [[ $1 =~ $2 ]]
+        then
+                echo "Valid Password:"
+        else
+                echo "Invalid Password:"
+        fi
+}
+checkPassword $password $password_At_List_one_Upper_Case
