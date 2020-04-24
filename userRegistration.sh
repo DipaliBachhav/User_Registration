@@ -19,6 +19,10 @@ function checkPattern()
 checkPattern $firstName $pattern
 checkPattern $lastName $pattern
 
+emailPattern1="^[a-zA-Z0-9]{3,}+[@]{1}$"
+emailPattern2="^[a-zA-Z0-9]{3,}+[@]{1}[a-zA-Z0-9]{3,}$"
+emailPattern3="^[a-zA-Z0-9]{3,}+[@]{1}[a-zA-Z0-9]{3,}+[.][a-zA-Z]{3,}$"
+emailPattern4="^[a-zA-Z0-9]{3,}+[@][a-zA-Z0-9]{3,}+[.][a-zA-Z]{3,}$"
 emailPattern="^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})$"
 
 read -p "Enter The Email Id := " email
@@ -28,9 +32,9 @@ function checkPattern()
         local userName=$1 Pattern=$2
         if [[ $userName =~ $Pattern ]]
         then
-                 echo "valid email"
+                 echo "Valid Email"
         else
-                 echo "Invalid email"
+                 echo "Invalid Email"
         fi
 }
 checkPattern $email $emailPattern
