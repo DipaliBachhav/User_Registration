@@ -3,7 +3,7 @@ shopt -s extglob
 
 echo "User Registration"
 
-pattern="^[A-Z][a-z]{3,}$"
+pattern="^[[:upper:]]{1}[a-z]{3,}$"
 read -p "Enter The First Name := " firstName
 read -p "Enter The Last Name := " lastName
 function checkPattern()
