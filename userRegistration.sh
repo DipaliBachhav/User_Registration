@@ -3,7 +3,7 @@ shopt -s extglob
 
 echo "User Registration"
 
-pattern="^[[:upper:]]{1}[a-z]{3,}$"
+pattern='^[[:upper:]]{1}[a-z]{3,}$'
 read -p "Enter The First Name := " firstName
 read -p "Enter The Last Name := " lastName
 function checkPattern()
@@ -19,11 +19,8 @@ function checkPattern()
 checkPattern $firstName $pattern
 checkPattern $lastName $pattern
 
-emailPattern1="^[a-zA-Z0-9]{3,}+[@]{1}$"
-emailPattern2="^[a-zA-Z0-9]{3,}+[@]{1}[a-zA-Z0-9]{3,}$"
-emailPattern3="^[a-zA-Z0-9]{3,}+[@]{1}[a-zA-Z0-9]{3,}+[.][a-zA-Z]{3,}$"
-emailPattern4="^[a-zA-Z0-9]{3,}+[@][a-zA-Z0-9]{3,}+[.][a-zA-Z]{3,}$"
-emailPattern="^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})$"
+
+emailPattern="^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*@[a-zA-Z]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2})?$"
 
 read -p "Enter The Email Id := " email
 
@@ -39,7 +36,7 @@ function checkPattern()
 }
 checkPattern $email $emailPattern
 
-mobilePattern="^[0-9]{2}[ ]{1}[0-9]{10}"
+mobilePattern="^[0-9]{2}[ ]{1}[0-9]{10}$"
 read -p "Enter The Mobile Number := " mobileNumber
 
 function checkMobilePattern()
@@ -51,42 +48,17 @@ function checkMobilePattern()
 		echo "Invalid Number"
 	fi
 }
-checkMobilePattern 
+checkMobilePattern
 
-passwordPattern="^[a-z]{8,}"
+passwordPattern="^[a-z]+"
+passwordUpperCase="[A-Z]{1}+"
+passwordNumericNumber="[0-9]{1}+"
+passwordSpecialCharacter="[@#$%&]?"
 read -p "Enter The Password := " password
 
 function checkPassword()
 {
-	if [[ ${#password} -ge 8 && $password =~ $passwordPattern ]]
-	then
-		echo "Valid Password:"
-	else
-		echo "Invalid Password:"
-	fi
-}
-checkPassword
-
-password_At_List_one_Upper_Case="^[a-zA-Z0-9]*(.*[A-Z].*{1}+)[a-zA-Z0-9]$"
-read -p "Enter The PassWord := " password
-
-function checkPassword()
-{
-        if [[ $1 =~ $2 ]]
-        then
-                echo "Valid Password:"
-        else
-                echo "Invalid Password:"
-        fi
-}
-checkPassword $password $password_At_List_one_Upper_Case
-
-password_At_List_One_Numeric_Number="^[a-zA-Z0-9]*(.*[A-Z].*{1}+)(.*[0-9].*{1}+)[a-zA-Z0-9]*{7,40}$"
-read -p "Enter The Password := " password
-
-function checkPassword()
-{
-        if [[ ${#password} -ge 8 && $password =~ $password_At_List_One_Numeric_Number ]]
+        if [[ ${#password} -ge 8 && $password =~ $passwordUpperCase && $password =~ $passwordPattern && $password =~ $passwordNumericNumber && $password =~ $passwordSpecialCharacter ]]
         then
                 echo "Valid Password"
         else
@@ -94,15 +66,3 @@ function checkPassword()
         fi
 }
 checkPassword
-
-function checkValidate()
-{
-        read -p "Enter The Password := " password
-        if [[ ${#password} -ge 8 && "$password" =~ *[[:lower:]]* && "$password" =~ *[[:upper:]]* && "$password" =~ *[[0-9]]*  && "$password" =~ *['!'@#\$%^\&*()_+]* ]]
-        then
-                echo "Valid Password"
-        else
-                echo "Invalid Password"
-        fi
-}
-checkValidate
